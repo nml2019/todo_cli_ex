@@ -1,0 +1,41 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+Here's the project outline I'm working to build towards.
+
+Key Components
+Argument Parsing with Clap
+Use the Clap crate to define your CLI interface declaratively. Clap’s derive API lets you annotate a struct and automatically generate parsing logic 
+Shuttle
+. The Docs.rs Quick Start shows how to add Clap (cargo add clap) and use #[derive(Parser)] on your Args struct, invoking Args::parse() in main() 
+Docs.rs
+. Shuttle.dev’s guide on writing CLI tools in Rust demonstrates both derive and builder patterns for help messages and subcommands 
+DEV Community
+.
+
+Data Modeling
+Define a simple Task struct (e.g., { id: usize, description: String, done: bool }) and a container like Vec<Task> or a HashMap<usize, Task>. This models your in‑memory state before persisting.
+
+Persistent Storage via File I/O
+Rust’s standard library provides std::fs::File with io::Result for reading and writing files 
+Rust Documentation
+. The Rust Cookbook demonstrates using BufReader and BufWriter for line‑by‑line file handling with the Lines iterator 
+Rust Language Nursery
+. Tutorialspoint offers concise examples for opening files, reading contents, and writing updates using the ? operator to propagate errors 
+TutorialsPoint
+. GeeksforGeeks covers the essentials of File::create, File::open, and buffered reads/writes in Rust 
+GeeksforGeeks
+.
+
+Seven‑Day Milestone Plan
+
+Day	Goals
+1	Scaffold project (cargo new todo-cli --bin), add Clap, define Args struct and basic help output.
+2	Implement add <description>: parse input, append new Task, persist to file, handle file‑not‑found.
+3	Implement list: read file, deserialize or parse lines, display tasks with IDs.
+4	Implement remove <id>: filter out completed tasks by ID, rewrite file, confirm removal.
+5	Add error handling and messaging: invalid ID, empty list, I/O errors.
+6	Refactor code: extract modules (cli.rs, storage.rs, task.rs), add unit tests for parsing and storage.
+7	Polish UX: format output neatly, add --help examples, run cargo clippy and cargo fmt.
